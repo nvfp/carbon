@@ -176,6 +176,11 @@ class Button:
     def set_lock_by_id(id: str, locked: bool, /):
         Button.buttons[id].set_lock(locked)
 
+    @staticmethod
+    def set_lock_by_tag(tag: str, locked: bool, /):
+        for button in Button.tags[tag]:
+            button.set_lock(locked)
+
     def set_visibility(self, visible: bool, /):
         if self.visible is not visible:
             self.visible = visible

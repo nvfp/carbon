@@ -12,5 +12,11 @@ from carbon.time import get_sexagecimal
 from carbon.utils import minmax_normalization
 ```
 
+## Change log
+- 1.1.0 (2023 May 4):
+    - added `carbon/quick_visual` module
+    - added `carbon/graph` module
+    - added `carbon/noise` module
+
 ## Troubleshoot
 - If Python can't find the module, as indicated by `ModuleNotFoundError: No module named 'carbon'`, try putting it in Python's standard folder for external libraries (~/Python3/Lib/site-packages).

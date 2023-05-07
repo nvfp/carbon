@@ -23,7 +23,7 @@ BUTTON_BD_COLOR = _g(245)
 SLIDER_COLOR_LOCKED = _g(45)
 SLIDER_COLOR = _g(75)
 
-TOLERANCE = 0.01  # if 0.01 -> 1% of the precision
+TOLERANCE = 0.5  # if 0.01 -> 1% of the precision
 
 
 class _Slider:
@@ -335,7 +335,11 @@ class Slider(_Slider):
 
             mousex = self.page.winfo_pointerx()
             value = self.min + ((mousex - (self.x - ROD_LEN/2))/ROD_LEN)*(self.max - self.min)
-            value = round(value, self.prec)
+
+            if self.prec == 0:
+                value = int(value)
+            else:
+                value = round(value, self.prec)
 
             if abs(value - round(value/self.step)*self.step) < TOLERANCE*self.step:
 
