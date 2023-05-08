@@ -18,9 +18,14 @@ LABEL_COLOR_LOCKED = '#050505'
 
 class Button:
 
-    buttons: dict[str, 'Button'] = {}
     page: _tk.Canvas = None
-    tags: dict[str, list['Button']] = {}
+    @staticmethod
+    def set_page(page: _tk.Canvas, /) -> None:
+        Button.page = page
+
+    buttons: dict[str, 'Button'] = {}
+    # tags: dict[str, list['Button']] = {}  # clash with `self.tags`
+    button_tags: dict[str, list['Button']] = {}
 
     def __init__(
         self,
@@ -35,11 +40,11 @@ class Button:
         tags: str | list[str] | None = None,
     ) -> None:
 
+        self.id = id
         if id in Button.buttons:
             raise ValueError(f'The id {repr(id)} is duplicated.')
         Button.buttons[id] = self
 
-        self.id = id
         self.x = x
         self.y = y
         self.label = label
@@ -48,18 +53,19 @@ class Button:
         self.locked = locked
         self.visible = visible
 
+        ## <tags>
         if type(tags) is str:
-            tag = tags
-            if tag in Button.tags:
-                Button.tags[tag].append(self)
-            else:
-                Button.tags[tag] = [self]
-        elif (type(tags) is list) or (type(tags) is tuple):
-            for tag in tags:
-                if tag in Button.tags:
-                    Button.tags[tag].append(self)
+            self.tags = [tags]
+        elif (type(tags) is list) or (type(tags) is tuple) or (tags is None):
+            self.tags = tags
+        
+        if tags is not None:
+            for tag in self.tags:
+                if tag in Button.button_tags:
+                    Button.button_tags[tag].append(self)
                 else:
-                    Button.tags[tag] = [self]
+                    Button.button_tags[tag] = [self]
+        ## </tags>
 
         ## runtime
         self.default_label = label
@@ -164,7 +170,8 @@ class Button:
 
     @staticmethod
     def release_listener():
-        for button in Button.buttons.values():
+        ## note that `Button.buttons.values()` might change
+        for button in list(Button.buttons.values()):
             button.release()
 
     def set_lock(self, locked: bool, /):
@@ -178,7 +185,7 @@ class Button:
 
     @staticmethod
     def set_lock_by_tag(tag: str, locked: bool, /):
-        for button in Button.tags[tag]:
+        for button in Button.button_tags[tag]:
             button.set_lock(locked)
 
     def set_visibility(self, visible: bool, /):
@@ -192,7 +199,7 @@ class Button:
 
     @staticmethod
     def set_visibility_by_tag(tag: str, visible: bool, /):
-        for button in Button.tags[tag]:
+        for button in Button.button_tags[tag]:
             button.set_visibility(visible)
 
     @staticmethod
@@ -221,3 +228,41 @@ class Button:
     @staticmethod
     def set_fn_by_id(id: str, fn: _typing.Callable[[], None], /):
         Button.buttons[id].set_fn(fn)
+
+
+    def move(self, x: int, y: int, /) -> None:
+        self.x = x
+        self.y = y
+        self.redraw()
+
+    @staticmethod
+    def move_by_id(id: str, x: int, y: int, /) -> None:
+        Button.buttons[id].move(x, y)
+
+
+    def destroy(self) -> None:
+        Button.buttons.pop(self.id)
+        
+        if self.tags is not None:
+            for tag in self.tags:
+                Button.button_tags[tag].remove(self)
+                if Button.button_tags[tag] == []:
+                    Button.button_tags.pop(tag)
+
+        Button.page.delete(f'button_{self.id}')
+    
+    @staticmethod
+    def destroy_by_tag(tag: str, /) -> None:
+
+        if tag not in Button.button_tags:
+            return
+
+        ## Use `list(Button.label_tags[tag])` instead of `Button.label_tags[tag]`
+        ## since `Button.label_tags[tag]` changes during iteration.
+        for button in list(Button.button_tags[tag]):
+            button.destroy()
+
+    @staticmethod
+    def destroy_all() -> None:
+        for button in list(Button.buttons.values()):
+            button.destroy()

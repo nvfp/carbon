@@ -13,6 +13,9 @@ from carbon.utils import minmax_normalization
 ```
 
 ## Change log
+- 1.1.1 (2023 May 7):
+    - Resolved the conflict between `Button.tags` and `self.tags`.
+    - Added new arguments to `carbon.gui.label.Label` (`bd`, `bd_width`, `wraplength`, `padx`, `pady`)
 - 1.1.0 (2023 May 4):
     - added `carbon/quick_visual` module
     - added `carbon/graph` module
