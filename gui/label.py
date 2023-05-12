@@ -20,7 +20,7 @@ class Label:
         bg: str = '#111',
         bd: str = '#555',
         bd_width: int = 0,
-        wraplength: int = 250,
+        wraplength: int = 1000,
         padx: int = 0,
         pady: int = 0,
         visible: bool = True,
@@ -34,8 +34,10 @@ class Label:
 
         self.x = x
         self.y = y
+        self.font = font
         self.text = text
         self.anchor = anchor
+        self.fg = fg
         self.visible = visible
 
         self.default_text = text
@@ -79,6 +81,27 @@ class Label:
     @staticmethod
     def set_text_by_id(id: str, text: str | None, /):
         Label.labels[id].set_text(text)
+
+
+    def set_font(self, font: str | tuple[str, int], /):
+        if font != self.font:
+            self.font = font
+            self.label.configure(font=font)
+
+    @staticmethod
+    def set_font_by_id(id: str, font: str | tuple[str, int], /):
+        Label.labels[id].set_font(font)
+
+
+    def set_fg(self, fg: str, /):
+        if fg != self.fg:
+            self.fg = fg
+            self.label.configure(fg=fg)
+
+    @staticmethod
+    def set_fg_by_id(id: str, fg: str, /):
+        Label.labels[id].set_fg(fg)
+
 
     def set_visibility(self, visible: bool, /):
         if self.visible is not visible:

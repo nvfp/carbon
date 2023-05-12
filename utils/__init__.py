@@ -44,3 +44,35 @@ def slice_list(__in: list, __n: int, /) -> list:
         for i in range(0, len(__in), __n)
     ]
     return out
+
+
+def map_range(__value, /, from_min, from_max, to_min, to_max) -> float:
+    """
+    Maps a value from one range to another.
+
+    ---
+
+    ## Params
+        - `__value`: The value to be mapped
+        - `from_min`: The minimum value of the original range
+        - `from_max`: The maximum value of the original range
+        - `to_min`: The minimum value of the target range
+        - `to_max`: The maximum value of the target range
+
+    ## Returns
+        - The mapped value in the target range.
+
+    ## Demo
+        >>> original_value = 5
+        >>> mapped_value = map_range(original_value, 1, 9, 0, 1)
+        >>> print(mapped_value)
+        0.5
+    """
+    
+    ## normalize the value from the original range
+    normalized_value = (__value - from_min) / (from_max - from_min)
+
+    ## scale the normalized value to the target range
+    mapped_value = normalized_value * (to_max - to_min) + to_min
+
+    return mapped_value

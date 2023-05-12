@@ -28,19 +28,19 @@ TOLERANCE = 0.5  # if 0.01 -> 1% of the precision
 
 class _Slider:
 
-    sliders: dict[str, '_Slider'] = {}
     page: _tk.Canvas = None
-    page_focus = None
-    tags: dict[str, list['_Slider']] = {}
-
     @staticmethod
     def set_page(page: _tk.Canvas, /):
         _Slider.page = page
 
+    page_focus = None
     @staticmethod
     def set_page_focus(page_focus: list[_typing.Any], /):
         _Slider.page_focus = page_focus
-    
+
+    sliders: dict[str, '_Slider'] = {}
+    slider_tags: dict[str, list['_Slider']] = {}  # note that the horizontal and vertical sliders store the tags together
+
     def _release(self):
         if self.pressed:
             self.pressed = False
@@ -59,12 +59,12 @@ class _Slider:
 
     @staticmethod
     def hold_listener():
-        for slider in _Slider.sliders.values():
+        for slider in list(_Slider.sliders.values()):
             slider._hold()
 
     @staticmethod
     def release_listener():
-        for slider in _Slider.sliders.values():
+        for slider in list(_Slider.sliders.values()):
             slider._release()
 
     def set_lock(self, locked: bool, /) -> None:
@@ -78,7 +78,7 @@ class _Slider:
 
     @staticmethod
     def set_lock_by_tag(tag: str, locked: bool, /) -> None:
-        for slider in _Slider.tags[tag]:
+        for slider in _Slider.slider_tags[tag]:
             slider.set_lock(locked)
     
     @staticmethod
@@ -97,7 +97,7 @@ class _Slider:
     
     @staticmethod
     def set_visibility_by_tag(tag: str, visible: bool, /) -> None:
-        for slider in _Slider.tags[tag]:
+        for slider in _Slider.slider_tags[tag]:
             slider.set_visibility(visible)
     
     @staticmethod
@@ -126,7 +126,7 @@ class _Slider:
 
     @staticmethod
     def set_value_by_tag(tag: str, value: int | None, /) -> None:
-        for slider in _Slider.tags[tag]:
+        for slider in _Slider.slider_tags[tag]:
             slider.set_value(value)
 
     @staticmethod
@@ -137,6 +137,32 @@ class _Slider:
     @staticmethod
     def get_value_by_id(id: str, /) -> None:
         return _Slider.sliders[id].value
+
+
+    def destroy(self) -> None:
+        _Slider.sliders.pop(self.id)
+
+        if self.tags is not None:
+            for tag in self.tags:
+                _Slider.slider_tags[tag].remove(self)
+                if _Slider.slider_tags[tag] == []:
+                    _Slider.slider_tags.pop(tag)
+
+        _Slider.page.delete(f'slider_{self.id}')
+    
+    @staticmethod
+    def destroy_by_tag(tag: str, /) -> None:
+
+        if tag not in _Slider.slider_tags:
+            return
+
+        for slider in list(_Slider.slider_tags[tag]):
+            slider.destroy()
+
+    @staticmethod
+    def destroy_all() -> None:
+        for slider in list(_Slider.sliders.values()):
+            slider.destroy()
 
 
 class Slider(_Slider):
@@ -171,11 +197,11 @@ class Slider(_Slider):
     ) -> None:
         """box color, width, and height must be provided if the box shown."""
 
+        self.id = id
         if id in self.sliders:
             raise ValueError(f'The id {repr(id)} is not available.')
         self.sliders[id] = self
 
-        self.id = id
         self.min = min
         self.max = max
         self.step = step
@@ -205,18 +231,19 @@ class Slider(_Slider):
         self.pressed = False
         self.hovered = False
 
+        ## <tags>
         if type(tags) is str:
-            tag = tags
-            if tag in self.tags:
-                self.tags[tag].append(self)
-            else:
-                self.tags[tag] = [self]
-        elif (type(tags) is list) or (type(tags) is tuple):
-            for tag in tags:
-                if tag in self.tags:
-                    self.tags[tag].append(self)
+            self.tags = [tags]
+        elif (type(tags) is list) or (type(tags) is tuple) or (tags is None):
+            self.tags = tags
+        
+        if tags is not None:
+            for tag in self.tags:
+                if tag in _Slider.slider_tags:
+                    _Slider.slider_tags[tag].append(self)
                 else:
-                    self.tags[tag] = [self]
+                    _Slider.slider_tags[tag] = [self]
+        ## </tags>
         
         self._redraw()
 
@@ -389,11 +416,11 @@ class VSlider(_Slider):
     ) -> None:
         """box color, width, and height must be provided if the box shown."""
 
+        self.id = id
         if id in self.sliders:
             raise ValueError(f'The id {repr(id)} is not available.')
         self.sliders[id] = self
 
-        self.id = id
         self.min = min
         self.max = max
         self.step = step
@@ -423,19 +450,20 @@ class VSlider(_Slider):
         self.pressed = False
         self.hovered = False
 
+        ## <tags>
         if type(tags) is str:
-            tag = tags
-            if tag in self.tags:
-                self.tags[tag].append(self)
-            else:
-                self.tags[tag] = [self]
-        elif (type(tags) is list) or (type(tags) is tuple):
-            for tag in tags:
-                if tag in self.tags:
-                    self.tags[tag].append(self)
-                else:
-                    self.tags[tag] = [self]
+            self.tags = [tags]
+        elif (type(tags) is list) or (type(tags) is tuple) or (tags is None):
+            self.tags = tags
         
+        if tags is not None:
+            for tag in self.tags:
+                if tag in _Slider.slider_tags:
+                    _Slider.slider_tags[tag].append(self)
+                else:
+                    _Slider.slider_tags[tag] = [self]
+        ## </tags>
+
         self._redraw()
 
     def _redraw(self):

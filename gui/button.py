@@ -170,7 +170,6 @@ class Button:
 
     @staticmethod
     def release_listener():
-        ## note that `Button.buttons.values()` might change
         for button in list(Button.buttons.values()):
             button.release()
 
