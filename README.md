@@ -45,8 +45,7 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
 ## FAQ
 
 - Compatibility:
-
-    > Latest version is always compatible with older versions (e.g., `carbon-1.3.0` works with projects that use `carbon-1.0.0` or `carbon-1.2.0`)
+    - Latest version is always compatible with older versions (e.g., `carbon-1.3.0` works with projects that use `carbon-1.0.0` or `carbon-1.2.0`)
 
 
 ## Changelog
