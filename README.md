@@ -50,6 +50,7 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
 
 ## Changelog
 - 1.2.0 (May 12, 2023):
+    - Updated `carbon.graph.graph2d.graph2d`: `carbon.graph.graph2d.v2`
     - Added `carbon/neuralnet/dense`
     - Added `carbon/neuralnet/convo`
     - Added `carbon/neuralnet/genetic`
