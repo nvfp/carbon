@@ -2,6 +2,8 @@
 
 This is a Python utilities module developed by the [author](https://nvfp.github.io) that bundles functions used across many of his projects.
 
+Quick Tip: If you're here because you need to run a specific project that uses this module, simply follow the **Installation** section.
+
 
 ## Installation
 
