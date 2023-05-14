@@ -36,7 +36,8 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
             ```
         - Newest:
             ```python
-            ## `carbon.gui_v2` is the next generation of `carbon.gui`, featuring a different usage approach, data structure, and more.
+            ## `carbon.gui_v2` is the next generation of `carbon.gui`,
+            ## featuring a different usage approach, data structure, and more.
             from carbon.gui_v2.app import App
             from carbon.gui_v2.page import Page
             from carbon.gui_v2.widget.button import Button
@@ -55,19 +56,19 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
     - Added `carbon/math`
     - Added `carbon/path`
     - Added `carbon/color`
+    - Added `carbon/gui/shape`
+    - Added `get_angle` and `rotate_coordinate` to `carbon/math`
     - Added `map_range` to `carbon/utils`
     - New methods for `carbon.gui.label.Label`: `set_font`, `set_font_by_id`, `set_fg`, `set_fg_by_id`
 - 1.1.1 (2023 May 7):
     - Resolved the conflict between `Button.tags` and `self.tags`.
     - Added new arguments to `carbon.gui.label.Label` (`bd`, `bd_width`, `wraplength`, `padx`, `pady`)
 - 1.1.0 (2023 May 4):
-    - added `carbon/quick_visual` module
-    - added `carbon/graph` module
-    - added `carbon/noise` module
+    - added `carbon/quick_visual`, `carbon/graph`, and `carbon/noise` modules
 
 ## Troubleshoot
 - If Python can't find the module, as indicated by `ModuleNotFoundError: No module named 'carbon'`, try putting it in Python's standard folder for external libraries (`~/Python3/Lib/site-packages`).
-- If you encounter any bugs/issues or have questions, please don't hesitate to contact me [here](https://nvfp.github.io/contact) or open an issue/pull request.
+- To report bugs/issues or ask questions, you can reach me [here](https://nvfp.github.io/contact) or open an issue/pull request.
 
 ## License
 This project is licensed under the MIT license.

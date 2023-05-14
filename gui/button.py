@@ -24,7 +24,6 @@ class Button:
         Button.page = page
 
     buttons: dict[str, 'Button'] = {}
-    # tags: dict[str, list['Button']] = {}  # clash with `self.tags`
     button_tags: dict[str, list['Button']] = {}
 
     def __init__(
