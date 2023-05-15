@@ -377,8 +377,9 @@ class Graph2D:
         else:
             YMAX = self.ymax
 
-        LEN_X = XMAX - XMIN
-        LEN_Y = YMAX - YMIN
+        ## LEN_X and LEN_Y can't be zero
+        LEN_X = max(0.001, XMAX - XMIN)
+        LEN_Y = max(0.001, YMAX - YMIN)
 
 
         ## redraw the ticks
