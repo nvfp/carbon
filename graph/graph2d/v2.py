@@ -378,8 +378,8 @@ class Graph2D:
             YMAX = self.ymax
 
         ## LEN_X and LEN_Y can't be zero
-        LEN_X = max(0.001, XMAX - XMIN)
-        LEN_Y = max(0.001, YMAX - YMIN)
+        LEN_X = max(10**(-self.tick_x_prec), XMAX - XMIN)
+        LEN_Y = max(10**(-self.tick_y_prec), YMAX - YMIN)
 
 
         ## redraw the ticks
