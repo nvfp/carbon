@@ -2,15 +2,15 @@
 
 This is a Python utilities module developed by the [author](https://nvfp.github.io) that bundles functions used across many of his projects.
 
-Quick Tip: If you're here because you need to run a specific project that uses this module, simply follow the **Installation** section.
+*Quick Tip*: If you're here because you need to run a specific project that uses this module, simply follow the **Installation** section.
 
 
 ## Installation
 
 - Manual:
-    - Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
-    - Remove the version number (`carbon-1.x.x` -> `carbon`).
-    - Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
+    1. Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
+    2.  Remove the version number (`carbon-1.x.x` -> `carbon`).
+    3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
 
 
 ## Try it
@@ -47,7 +47,8 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
 ## FAQ
 
 - Compatibility:
-    - Latest version is always compatible with older versions (e.g., `carbon-1.3.0` works with projects that use `carbon-1.0.0` or `carbon-1.2.0`)
+
+    Latest version is always compatible with older versions (e.g., `carbon-1.3.0` works with projects that use `carbon-1.0.0` or `carbon-1.2.0`)
 
 
 ## Changelog
