@@ -33,6 +33,8 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
 
 TL;DR: It's recommended to always use the latest version.
 
+Sometimes, when I need to add a feature or make big changes, I find starting over is the least stressful way to ensure older projects don't break. Here's how I manage the generations across the module.
+
 **Minor** (argument order, scaling, generalization, etc.):
 - `carbon.mdl.fn` -> `carbon.mdl.fn2`
 - `carbon.mdl.fn` -> `carbon.mdl.v2.fn`
