@@ -9,7 +9,7 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
 
 - Manual:
     1. Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
-    2.  Remove the version number (`carbon-1.x.x` -> `carbon`).
+    2. Remove the version number (`carbon-1.x.x` -> `carbon`).
     3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
 
 
