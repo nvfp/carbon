@@ -14,17 +14,20 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
     1. Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
     2. Remove the version number (`carbon-1.x.x` -> `carbon`).
     3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
-    4. Install the dependencies:
+    4. Install dependencies:
 
-        ```sh
-        pip install -r /path/to/carbon/requirements.txt
-        ```
+        - libraries:
 
-        or navigate to the `carbon` folder:
+            ```sh
+            pip install -r /path/to/carbon/requirements.txt
+            ```
 
-        ```sh
-        pip install -r requirements.txt
-        ```
+            or navigate to the `carbon` folder:
+
+            ```sh
+            pip install -r requirements.txt
+            ```
+        - [FFmpeg](https://ffmpeg.org/download.html) (optional, if needed for the project. Any version is okay, but it's recommended to use version 5 or the latest)
 
 
 ## Try it

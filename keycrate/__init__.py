@@ -38,10 +38,15 @@ class KeyCrate:
         - `AttributeError`: if trying to access a nonexistent key
         - see `self.parse` exceptions
 
-        ## Demo
-        >>> kc = KeyCrate('settings.txt', eval_value=True)
+        ## Demo 1
+        >>> kc = KeyCrate('config.txt', eval_value=True)
         >>> fps = kc.fps  # or kc['fps']
         >>> output_dir = kc['output folder']
+
+        ## Demo 2
+        >>> settings = KeyCrate('settings.txt', key_is_var=True, only_keys=['fps', 'dur'])
+        >>> fps = settings.fps
+        >>> dur = settings.dur
         """
 
         ## added the prefix "_kc__" to prevent conflicts with the keys
