@@ -10,9 +10,21 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
 ## Installation
 
 - Manual:
+
     1. Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
     2. Remove the version number (`carbon-1.x.x` -> `carbon`).
     3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
+    4. Install the dependencies:
+
+        ```sh
+        pip install -r /path/to/carbon/requirements.txt
+        ```
+
+        or navigate to the `carbon` folder:
+
+        ```sh
+        pip install -r requirements.txt
+        ```
 
 
 ## Try it
