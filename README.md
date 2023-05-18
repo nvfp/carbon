@@ -27,7 +27,7 @@ This is a Python utilities module developed by the [author](https://nvfp.github.
             ```sh
             pip install -r requirements.txt
             ```
-        - [FFmpeg](https://ffmpeg.org/download.html) (optional, if needed for the project. Any version is okay, but it's recommended to use version 5 or the latest)
+        - [FFmpeg](https://ffmpeg.org/download.html) (optional, if the project needs it. Any version should be okay, but version 5 or latest is recommended)
 
 
 ## Try it
