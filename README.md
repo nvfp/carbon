@@ -85,7 +85,7 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
     - Added `open_file` to `carbon/path`
     - Added `get_gray` to `carbon/color`
     - Added `get_angle` and `rotate_coordinate` to `carbon/math`
-    - Added `map_range` and `is_valid_var_name` to `carbon/utils`
+    - Added `map_range`, `printer` and `is_valid_var_name` to `carbon/utils`
     - New methods for `carbon.gui.label.Label`: `set_font`, `set_font_by_id`, `set_fg`, `set_fg_by_id`
 - 1.1.1 (2023 May 7):
     - Resolved the conflict between `Button.tags` and `self.tags`.

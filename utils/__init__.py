@@ -1,3 +1,4 @@
+import datetime as _datetime
 import keyword as _keyword
 import random as _random
 
@@ -92,3 +93,16 @@ def is_valid_var_name(__in: str, /) -> bool:
     - `is_valid_var_name('cold_ice')` -> `True`
     """
     return (__in.isidentifier() and (not _keyword.iskeyword(__in)))
+
+
+def printer(__msg: str, /) -> None:
+    """
+    For simple logging needs.
+    
+    ---
+
+    ## Demo
+    >>> printer('INFO: foo')  # [06:15:09] INFO: foo
+    >>> printer('WARNING: bar')  # [06:15:09] WARNING: bar
+    """
+    print(f'[{_datetime.datetime.now().strftime("%H:%M:%S")}] {__msg}')
