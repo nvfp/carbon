@@ -34,3 +34,25 @@ def interpolate_color(color1: str, color2: str, x: float) -> str:
     ## convert interpolated RGB values to hexadecimal color string
     interpolated_color = f'#{r:02x}{g:02x}{b:02x}'
     return interpolated_color
+
+
+def get_gray(lum: int = 128, alpha: float = 1.0, /) -> str:
+    """
+    Return grayscale color in hexadecimal.
+
+    ---
+
+    ## Params
+    - `lum`: luminance, interval: [0, 255].
+    - `alpha`: opacity, interval: [0, 1].
+
+    ## Demo
+    >>> get_gray(255, 1)
+    '#ffffff'
+    >>> get_gray(255, 0)
+    '#000000'
+    >>> get_gray(128, 1)
+    '#808080'
+    """
+    lum_prime = round(lum*alpha)
+    return f'#{lum_prime:02x}{lum_prime:02x}{lum_prime:02x}'

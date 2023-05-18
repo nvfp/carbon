@@ -1,8 +1,8 @@
 import tkinter as _tk
 import typing as _typing
 
-from goodhour.color import get_grayscale as _g
-from goodhour.utils import minmax_normalization as _norm
+from carbon.color import get_gray as _g
+from carbon.utils import minmax_normalization as _norm
 
 
 ROD_LEN = 200

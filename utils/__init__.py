@@ -1,3 +1,4 @@
+import keyword as _keyword
 import random as _random
 
 
@@ -8,7 +9,7 @@ def randfloat(__low: float, __high: float, __prec: int = 2, /) -> float:
     `__prec` normally max at 15-18 (depends on system).
     """
 
-    ## each end only half probability-dense
+    ## can't use below because each end only half probability-dense
     # return round(_random.uniform(__low, __high), __prec)
 
     k = pow(10, __prec)
@@ -76,3 +77,18 @@ def map_range(__value, /, from_min, from_max, to_min, to_max) -> float:
     mapped_value = normalized_value * (to_max - to_min) + to_min
 
     return mapped_value
+
+
+def is_valid_var_name(__in: str, /) -> bool:
+    """
+    Check if a string `__in` is valid for variable name.
+
+    ---
+
+    ## Demo
+    - `is_valid_var_name('2x')` -> `False`
+    - `is_valid_var_name('x2')` -> `True`
+    - `is_valid_var_name('cold-ice')` -> `False`
+    - `is_valid_var_name('cold_ice')` -> `True`
+    """
+    return (__in.isidentifier() and (not _keyword.iskeyword(__in)))

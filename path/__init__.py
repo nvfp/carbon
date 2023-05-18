@@ -1,5 +1,7 @@
 import json as _json
 import os as _os
+import subprocess as _sp
+import sys as _sys
 import typing as _typing
 
 
@@ -92,3 +94,35 @@ class SafeJSON:
         if _os.path.exists(pth_norm) and (not _os.path.exists(tmp_file)) and _os.path.exists(bak_file):
             _os.remove(bak_file)
             return
+
+
+def open_file(file_pth: str, /) -> None:
+    """
+    Opens a file using the default system application.
+
+    ---
+
+    ## Exceptions
+    - `NotImplementedError`: if the OS is unrecognizable
+    """
+
+    system = _sys.platform
+
+    ## Windows
+    if system == 'win32':
+        _os.startfile(file_pth)
+
+    ## macOS
+    elif system == 'darwin':
+        _sp.call(['open', file_pth])
+
+    ## Linux
+    elif system.startswith('linux'):
+        _sp.call(['xdg-open', file_pth])
+
+    ## Windows/Cygwin
+    elif system.startswith('cygwin'):
+        _sp.call(['cygstart', file_pth])
+
+    else:
+        raise NotImplementedError(f'Unsupported platform: {system}')
