@@ -72,11 +72,10 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
 
 ## Changelog
 
-- 1.2.0 (May 12, 2023):
+- 1.2.0 (May 12-20, 2023):
     - Updated `carbon.graph.graph2d.graph2d`: `carbon.graph.graph2d.v2`
+    - Updated `carbon.gui.button`: `carbon.gui.button.v2`
     - Added `carbon/neuralnet/dense`
-    - Added `carbon/neuralnet/convo`
-    - Added `carbon/neuralnet/genetic`
     - Added `carbon/math`
     - Added `carbon/path`
     - Added `carbon/color`
