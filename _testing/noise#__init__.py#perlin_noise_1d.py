@@ -41,7 +41,9 @@ def redraw():
         p,
         pos=((mon_width - WIDTH)*0.85, (mon_height - HEIGHT)/2),
         width=WIDTH,
-        height=HEIGHT
+        height=HEIGHT,
+        title='1D Perlin noise',
+        title_font='Verdana 21'
     )
 
 redraw()  # init
