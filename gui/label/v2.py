@@ -13,7 +13,7 @@ class Label:
     - param `id` is now optional
     - Default font set to Verdana
     - Params `x` and `y` are now optional since the position can be adjusted using the `align` method for better positioning
-    - new method `get_anchor_loc`
+    - new methods: `get_anchor_loc`, `align`
     """
 
     labels: dict[str, 'Label'] = {}
@@ -236,18 +236,27 @@ class Label:
         self.label.place(x=x, y=y, anchor=self.anchor)
 
     @staticmethod
-    def move_by_id(id: str, x: int, y: int, /) -> None:
-        Label.labels[id].move(x, y)
+    def move_by_id(
+        id: str,
+        x: int,
+        y: int,
+        /,
+        anchor: _typing.Optional[_typing.Literal['center', 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw']] = None
+    ) -> None:
+        Label.labels[id].move(x, y, anchor)
 
 
     def align(
         self,
         target: 'Label',
-        anchor: _typing.Literal['center', 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] = 'nw',
-        target_anchor: _typing.Literal['center', 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'] = 'ne',
+        anchor: str = 'nw',
+        target_anchor: str = 'ne',
         xgap: float = 15,
         ygap: float = 0
     ) -> 'Label':
+        """
+        Valid options for `anchor` and `target_anchor` are `['center', 'n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw']`.
+        """
 
         ## getting the target anchor location
         x, y = target.get_anchor_loc(target_anchor)

@@ -13,20 +13,16 @@ page = tk.Canvas(width=mon_width, height=mon_height, bg='#000', highlightthickne
 page.place(x=0, y=0)
 
 
-
-
-x = 100
-y = 100
+x = 200
+y = 200
 r = 3
-lbl = Label(x, y, 'MAIN')
 page.create_oval(x-r, y-r, x+r, y+r, fill='#f00')
 
-
-lbl = Label(text='next to MAIN').align(lbl)
-lbl = Label(text='below').align(lbl, 'n', 's', 0, 0)
-lbl = Label(text='below again').align(lbl, 'n', 's', 0, 15)
-lbl = Label(text='TR corner to DL corner').align(lbl, 'n', 's', 0, 15)
-
+lbl = Label(x, y, '1. MAIN')
+lbl = Label(text='2. next to MAIN').align(lbl)
+lbl = Label(text='3. below').align(lbl, 'n', 's', 0, 0)
+lbl = Label(text='4. below with gap').align(lbl, 'n', 's', 0, 15)
+lbl = Label(text='5. TR corner to DL corner', bd_width=2).align(lbl, 'ne', 'sw', 0, 0)
 
 
 root.bind('<Escape>', lambda e: root.destroy())
