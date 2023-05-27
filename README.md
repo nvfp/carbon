@@ -1,8 +1,8 @@
 # carbon
 
-This is a Python utilities module developed by the [author](https://nvfp.github.io) that bundles functions used across many of his projects.
+This is a Python toolkit that bundles handy utility functions such as color interpolations, activation functions, Perlin noise, and others. The aim is to build them from the ground up to help understand how they work.
 
-*Quick Tip*: If you're here because you need to run a specific project that uses this module, simply follow the **Installation** section.
+*Quick Tip*: If you're here because you need to run a specific project that uses this module, you can jump directly to the **Installation** section.
 
 ![carbon's banner](_archive/20230515-banner-640.jpg)
 
