@@ -30,7 +30,13 @@ This is a Python toolkit that bundles handy utility functions such as color inte
         - [FFmpeg](https://ffmpeg.org/download.html) (optional, if the project needs it. Any version should be okay, but version 5 or latest is recommended)
 
 
-## Try it
+## Usage
+
+- check the version:
+
+    ```sh
+    python carbon -v
+    ```
 
 - Basic:
 
@@ -40,7 +46,9 @@ This is a Python toolkit that bundles handy utility functions such as color inte
     from carbon.time import get_sexagecimal
     from carbon.utils import minmax_normalization
     ```
+
 - Testing:
+
     ```sh
     python carbon\_testing\noise#__init__.py#perlin_noise_1d.py
     ```

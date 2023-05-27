@@ -425,6 +425,10 @@ class Button:
                     Button.button_tags.pop(tag)
 
         Button.page.delete(f'Button_{self.id}')
+    
+    @staticmethod
+    def destroy_by_id(id: str, /) -> None:
+        Button.buttons[id].destroy()
 
     @staticmethod
     def destroy_by_tag(tag: str, /) -> None:

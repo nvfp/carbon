@@ -287,6 +287,10 @@ class Label:
                     Label.label_tags.pop(tag)
         
         self.label.destroy()
+    
+    @staticmethod
+    def destroy_by_id(id: str, /) -> None:
+        Label.labels[id].destroy()
 
     @staticmethod
     def destroy_by_tag(tag: str, /) -> None:
