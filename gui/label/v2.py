@@ -67,9 +67,9 @@ class Label:
 
         ## self.id ensures that we can modify a specific instance without affecting the others
         if id is None:
-            self.id = str(_random.randint(-10000, 10000))
+            self.id = str(_random.randint(0, 100_000))
             while self.id in Label.labels:
-                self.id = str(_random.randint(-10000, 10000))
+                self.id = str(_random.randint(0, 100_000))
         else:
             self.id = id
             if self.id in Label.labels:
