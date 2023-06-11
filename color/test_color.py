@@ -4,7 +4,8 @@ from carbon.color import (
     get_gray,
     getgray,
     rgb_to_hex,
-    hexa_to_hex
+    hexa_to_hex,
+    interpolate_with_black
 )
 
 
@@ -147,6 +148,24 @@ class TestColor(unittest.TestCase):
 
         result = hexa_to_hex('#ccddee', 0.345, '#123456')
         self.assertEqual(result, '#526e8a')
+    
+    def test_interpolate_with_black(self):
+
+        result = interpolate_with_black('#ffffff', 0)
+        self.assertEqual(result, '#000000')
+
+        result = interpolate_with_black('#ffffff', 0.5)
+        self.assertEqual(result, '#808080')
+
+        result = interpolate_with_black('#ffffff', 1)
+        self.assertEqual(result, '#ffffff')
+
+
+        result = interpolate_with_black('#131313', 0.8)
+        self.assertEqual(result, '#0f0f0f')
+
+        result = interpolate_with_black('#abc123', 0.234)
+        self.assertEqual(result, '#282d08')
 
 
 if __name__ == '__main__':

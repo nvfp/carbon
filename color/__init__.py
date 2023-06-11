@@ -100,3 +100,18 @@ def hexa_to_hex(foreground: str, opacity: float, background: str) -> str:
     b = round(fg[2]*opacity + bg[2]*(1 - opacity))
 
     return f'#{r:02x}{g:02x}{b:02x}'
+
+
+def interpolate_with_black(foreground: str, opacity: float) -> str:
+    """
+    This is the optimized version of `hexa_to_hex(foreground, opacity, '#000000')`.
+    Please refer to the documentation of the `hexa_to_hex` function for more details.
+    """
+
+    c = [int(foreground[i:i+2], 16) for i in (1, 3, 5)]
+
+    r = round( c[0]*opacity )
+    g = round( c[1]*opacity )
+    b = round( c[2]*opacity )
+
+    return f'#{r:02x}{g:02x}{b:02x}'
