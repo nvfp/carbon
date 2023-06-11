@@ -2,7 +2,8 @@ import unittest
 from carbon.color import (
     interpolate_color,
     get_gray,
-    getgray
+    getgray,
+    rgb_to_hex
 )
 
 
@@ -80,6 +81,43 @@ class TestColor(unittest.TestCase):
         result = getgray(0.75, max_lum=100)
         self.assertEqual(result, '#4b4b4b')
 
+    def test_rgb_to_hex(self):
+
+        ## black color (all channels set to 0)
+        result = rgb_to_hex(0, 0, 0)
+        self.assertEqual(result, '#000000')
+
+        ## white color (all channels set to 255)
+        result = rgb_to_hex(255, 255, 255)
+        self.assertEqual(result, '#ffffff')
+
+        ## red color (only red channel set to 255)
+        result = rgb_to_hex(255, 0, 0)
+        self.assertEqual(result, '#ff0000')
+
+        ## green color (only green channel set to 255)
+        result = rgb_to_hex(0, 255, 0)
+        self.assertEqual(result, '#00ff00')
+
+        ## blue color (only blue channel set to 255)
+        result = rgb_to_hex(0, 0, 255)
+        self.assertEqual(result, '#0000ff')
+
+        ## custom color (random channel values)
+        result = rgb_to_hex(100, 150, 200)
+        self.assertEqual(result, '#6496c8')
+
+        ## boundary values (minimum and maximum channel values)
+        result = rgb_to_hex(0, 255, 127)
+        self.assertEqual(result, '#00ff7f')
+
+        ## negative channel values
+        result = rgb_to_hex(-10, 0, 255)
+        self.assertEqual(result, '#-a00ff')
+
+        ## large channel values
+        result = rgb_to_hex(1000, 500, 2550)
+        self.assertEqual(result, '#3e81f49f6')
 
 
 if __name__ == '__main__':

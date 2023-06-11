@@ -50,6 +50,10 @@ This is a Python toolkit that bundles handy utility functions such as color inte
 - Testing:
 
     ```sh
+    python -m unittest
+    ```
+
+    ```sh
     python carbon\_testing\noise#__init__.py#perlin_noise_1d.py
     ```
 
@@ -82,7 +86,7 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
 
 - 1.4.0 (June 11, 2023):
     - added unittest for `carbon/color`
-    - `carbon/color`: added `getgray`
+    - `carbon/color`: added `getgray`, `rgb_to_hex`
 - 1.3.1 (May 27, 2023):
     - Added `.gitkeep` into `carbon/_testing/_empty_dir`
 - 1.3.0 (May 27, 2023):

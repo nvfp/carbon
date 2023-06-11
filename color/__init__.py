@@ -79,3 +79,7 @@ def getgray(alpha: float, /, max_lum: int = 255) -> str:
     """
     a = f'{round(max_lum*alpha):02x}'
     return f'#{a}{a}{a}'
+
+
+def rgb_to_hex(r: int, g: int, b: int, /) -> str:
+    return f'#{r:02x}{g:02x}{b:02x}'
