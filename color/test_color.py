@@ -3,7 +3,8 @@ from carbon.color import (
     interpolate_color,
     get_gray,
     getgray,
-    rgb_to_hex
+    rgb_to_hex,
+    hexa_to_hex
 )
 
 
@@ -118,6 +119,34 @@ class TestColor(unittest.TestCase):
         ## large channel values
         result = rgb_to_hex(1000, 500, 2550)
         self.assertEqual(result, '#3e81f49f6')
+    
+    def test_hexa_to_hex(self):
+
+        result = hexa_to_hex('#ffffff', 0, '#000000')
+        self.assertEqual(result, '#000000')
+
+        result = hexa_to_hex('#ffffff', 0.5, '#000000')
+        self.assertEqual(result, '#808080')
+
+        result = hexa_to_hex('#ffffff', 1, '#000000')
+        self.assertEqual(result, '#ffffff')
+
+
+        result = hexa_to_hex('#abcabc', 0, '#abcabc')
+        self.assertEqual(result, '#abcabc')
+
+        result = hexa_to_hex('#abcabc', 0.5, '#abcabc')
+        self.assertEqual(result, '#abcabc')
+
+        result = hexa_to_hex('#abcabc', 1, '#abcabc')
+        self.assertEqual(result, '#abcabc')
+
+
+        result = hexa_to_hex('#112233', 0.25, '#aabbcc')
+        self.assertEqual(result, '#8495a6')
+
+        result = hexa_to_hex('#ccddee', 0.345, '#123456')
+        self.assertEqual(result, '#526e8a')
 
 
 if __name__ == '__main__':

@@ -83,3 +83,20 @@ def getgray(alpha: float, /, max_lum: int = 255) -> str:
 
 def rgb_to_hex(r: int, g: int, b: int, /) -> str:
     return f'#{r:02x}{g:02x}{b:02x}'
+
+
+def hexa_to_hex(foreground: str, opacity: float, background: str) -> str:
+    """
+    Calculates the hexadecimal color code of `foreground` with the given `opacity` on `background`.
+    The `foreground` and `background` must be valid hexadecimal color codes,
+    and the `opacity` value must be in the interval [0, 1].
+    """
+
+    fg = [int(foreground[i:i+2], 16) for i in (1, 3, 5)]
+    bg = [int(background[i:i+2], 16) for i in (1, 3, 5)]
+
+    r = round(fg[0]*opacity + bg[0]*(1 - opacity))
+    g = round(fg[1]*opacity + bg[1]*(1 - opacity))
+    b = round(fg[2]*opacity + bg[2]*(1 - opacity))
+
+    return f'#{r:02x}{g:02x}{b:02x}'
