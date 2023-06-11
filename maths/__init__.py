@@ -1,41 +1,33 @@
 """
-This module is deprecated to avoid overriding the stdlib module "math".
-
-Please use carbon.maths instead.
+This module is the next generation of carbon.math
 """
 import numpy as _np
 
 
-def tanh(__x: _np.ndarray, /, derivative: bool = False) -> _np.ndarray:
-    """`__x`: Float value or a numpy array."""
+def tanh(x: float | _np.ndarray, /, derivative: bool = False) -> float | _np.ndarray:
 
-    z = _np.tanh(__x)
+    z = _np.tanh(x)
 
     if derivative:
         return 1 - z*z
     else:
         return z
 
-def sigmoid(__x: _np.ndarray, /, derivative: bool = False) -> _np.ndarray:
-    """`__x`: Float value or a numpy array."""
+def sigmoid(x: float | _np.ndarray, /, derivative: bool = False) -> float | _np.ndarray:
 
-    z = 1 / (1 + _np.exp(-__x))
+    z = 1 / (1 + _np.exp(-x))
 
     if derivative:
         return z*(1 - z)
     else:
         return z
 
-def relu(__x: _np.ndarray, /, derivative: bool = False) -> _np.ndarray:
-    """`__x`: Float value or a numpy array."""
+def relu(x: float | _np.ndarray, /, derivative: bool = False) -> float | _np.ndarray:
 
     if derivative:
-        return _np.where(__x > 0, 1, 0)
+        return _np.where(x > 0, 1, 0)
     else:
-        return _np.maximum(0, __x)
-
-def softmax():
-    raise NotImplementedError
+        return _np.maximum(0, x)
 
 
 def get_angle(origin_x: float, origin_y: float, x: float, y: float, in_radians: bool = True) -> float:
@@ -89,7 +81,7 @@ def get_angle(origin_x: float, origin_y: float, x: float, y: float, in_radians: 
     return angle
 
 
-def rotate_coordinate(x: float, y: float, ctrx: float, ctry: float, a: float) -> tuple[float, float]:
+def rotate(x: float, y: float, ctrx: float, ctry: float, a: float) -> tuple[float, float]:
     """
     Rotate points `(x, y)` around a center point `(ctrx, ctry)` by a given angle `a` in radians (CCW).
     The x-axis is positive to the right, and the y-axis is positive upwards.
