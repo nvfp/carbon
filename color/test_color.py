@@ -1,4 +1,5 @@
 import unittest
+
 from carbon.color import (
     interpolate_color,
     get_gray,
