@@ -88,6 +88,7 @@ Mostly, basic functions (standalone, input-in-output-out) are the ones that unde
     - added unittest for `carbon/color`
     - `carbon/color`: added `getgray`, `rgb_to_hex`, `hexa_to_hex`, `interpolate_with_black`
     - added `carbon/maths` (to avoid overriding the stdlib module "math")
+    - added `carbon/text`
 - 1.3.1 (May 27, 2023):
     - Added `.gitkeep` into `carbon/_testing/_empty_dir`
 - 1.3.0 (May 27, 2023):
