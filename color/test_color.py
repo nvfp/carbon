@@ -1,7 +1,8 @@
 import unittest
 from carbon.color import (
     interpolate_color,
-    get_gray
+    get_gray,
+    getgray
 )
 
 
@@ -64,6 +65,21 @@ class TestColor(unittest.TestCase):
         ## maximum luminance and maximum opacity (white color)
         result = get_gray(255, 1.0)
         self.assertEqual(result, '#ffffff')
+
+    def test_getgray(self):
+
+        result = getgray(0.5)
+        self.assertEqual(result, '#808080')
+
+        result = getgray(0)
+        self.assertEqual(result, '#000000')
+
+        result = getgray(1, max_lum=200)
+        self.assertEqual(result, '#c8c8c8')
+
+        result = getgray(0.75, max_lum=100)
+        self.assertEqual(result, '#4b4b4b')
+
 
 
 if __name__ == '__main__':

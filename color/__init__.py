@@ -53,6 +53,29 @@ def get_gray(lum: int = 128, alpha: float = 1.0, /) -> str:
     '#000000'
     >>> get_gray(128, 1)
     '#808080'
+
+    ## Docs
+    - This function has been deprecated; use `getgray` instead.
     """
     lum_prime = round(lum*alpha)
     return f'#{lum_prime:02x}{lum_prime:02x}{lum_prime:02x}'
+
+def getgray(alpha: float, /, max_lum: int = 255) -> str:
+    """
+    Returns a hexadecimal color value representing a grayscale shade based on the given alpha and maximum luminance.
+
+    ---
+
+    ## Params
+    - `alpha`: A grayscale shade intensity value in the range [0, 1].
+    - `max_lum`: Maximum luminance value for grayscale in the range [0, 255].
+
+    ## Demo
+    >>> getgray(0.5)
+    '#808080'
+
+    ## Docs
+    - This function is the next version of `get_gray` (optimized, better variable names, and improved argument order).
+    """
+    a = f'{round(max_lum*alpha):02x}'
+    return f'#{a}{a}{a}'
