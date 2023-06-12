@@ -4,30 +4,30 @@ This is a Python toolkit that bundles handy utility functions such as color inte
 
 *Quick Tip*: If you're here because you need to run a specific project that uses this module, you can jump directly to the **Installation** section.
 
+**NOTE**: This module is the predecessor to [myKit](https://github.com/nvfp/myKit). Try myKit for a more up-to-date version of this module.
+
 ![carbon's banner](_archive/20230515-banner-640.jpg)
 
 
 ## Installation
 
-- Manual:
+1. Download the latest [version](https://github.com/nvfp/carbon/releases)
+2. Remove the version number (`carbon-1.x.x` -> `carbon`)
+3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`)
+4. Install dependencies:
 
-    1. Download the latest [version](https://github.com/nvfp/carbon/releases)
-    2. Remove the version number (`carbon-1.x.x` -> `carbon`)
-    3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`)
-    4. Install dependencies:
+    - libraries:
 
-        - libraries:
+        ```sh
+        pip install -r /path/to/carbon/requirements.txt
+        ```
 
-            ```sh
-            pip install -r /path/to/carbon/requirements.txt
-            ```
+        or navigate to the `carbon` folder:
 
-            or navigate to the `carbon` folder:
-
-            ```sh
-            pip install -r requirements.txt
-            ```
-        - [FFmpeg](https://ffmpeg.org/download.html) (optional, if the project needs it. Any version should be okay, but version 5 or latest is recommended)
+        ```sh
+        pip install -r requirements.txt
+        ```
+    - [FFmpeg](https://ffmpeg.org/download.html) (optional, if the project needs it. Any version should be okay, but version 5 or latest is recommended)
 
 
 ## Usage
