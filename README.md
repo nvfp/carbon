@@ -4,7 +4,7 @@ This is a Python toolkit that bundles handy utility functions such as color inte
 
 *Quick Tip*: If you're here because you need to run a specific project that uses this module, you can jump directly to the **Installation** section.
 
-**NOTE**: This module is the predecessor to [myKit](https://github.com/nvfp/myKit). Try myKit for a more up-to-date version of this module.
+**NOTE**: This module is no longer in development and is now replaced by [mykit](https://github.com/nvfp/mykit).
 
 ![carbon's banner](_archive/20230515-banner-640.jpg)
 
