@@ -1,7 +1,7 @@
 import os
 
 
-LIB_VER = '1.4.1-beta'
+LIB_VER = '1.4.1'
 LIB_DIR_PTH = os.path.dirname(os.path.abspath(__file__))
 LIB_NAME = os.path.basename(LIB_DIR_PTH)  # this name might include the version number
 LIB_NAME_ONLY = 'carbon'
