@@ -11,9 +11,9 @@ This is a Python toolkit that bundles handy utility functions such as color inte
 
 - Manual:
 
-    1. Download the latest `stable` version of this repository from the [releases](https://github.com/nvfp/carbon/releases) section.
-    2. Remove the version number (`carbon-1.x.x` -> `carbon`).
-    3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`).
+    1. Download the latest [version](https://github.com/nvfp/carbon/releases)
+    2. Remove the version number (`carbon-1.x.x` -> `carbon`)
+    3. Place it in a folder where Python can recognize it as a module (e.g. `~/code/carbon`)
     4. Install dependencies:
 
         - libraries:
