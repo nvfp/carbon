@@ -3,4 +3,4 @@ __pycache__/
 
 # Distribution / packaging
 dist/
-carbon.egg-info/
+*.egg-info/
