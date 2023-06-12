@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "carbon"
+name = "carbon-pypi"
 version = "1.4.1"
 authors = [
   { name="Nicholas Valentinus", email="nvfastplease@gmail.com" },
